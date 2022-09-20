@@ -1,1 +1,39 @@
 @import '~antd/dist/antd.css';
+
+@green: rgb(74, 222, 128);
+@blue: rgb(59, 130, 246);
+@indigo: rgb(168, 85, 247);
+.button {
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: .65rem 1.8rem;
+    font-size: 1.1rem;
+    box-shadow: 1px 3px 13px #00000028;
+    opacity: 1;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.button:hover {
+    opacity: .8;
+    box-shadow: none;
+}
+
+.button:active {
+    transform: scale(.95);
+    box-shadow: inset 1px -4px 8px #00000028;
+}
+
+.button_primary {
+    background: linear-gradient(to right, @blue, @indigo);
+    background-size: 150%;
+    color: #fff;
+}
+
+
+.fluid__image {
+    max-width: 100%;
+    height: auto;
+}
