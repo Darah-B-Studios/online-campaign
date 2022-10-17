@@ -1,0 +1,9 @@
+.navbar_links {
+  //    flex: 'auto'
+}
+
+@media screen and (min-width: 768px) {
+  .navbar_links {
+    width: 50%;
+  }
+}
