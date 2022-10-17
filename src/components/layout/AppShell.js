@@ -1,6 +1,8 @@
 import { Layout } from 'antd';
 import React from 'react';
 import NavLinks from './NavLinks';
+import "./layout.style.scss";
+
 const { Header, Content, Footer } = Layout;
 
 const AppShell = ({ children }) => {
@@ -11,7 +13,7 @@ const AppShell = ({ children }) => {
                     <span>Darah-B </span>
                     <span>Studios</span>
                 </div>
-                <NavLinks style={{ minWidth: 0, flex: 'auto' }} />
+                <NavLinks style={{ minWidth: 0 }} className="navbar_links" />
             </Header>
             <Content
                 style={{
