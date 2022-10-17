@@ -5,6 +5,7 @@ export const ROUTES = {
   LOGIN: "/login",
   SIGN_UP: "/signup",
   LOGIN_SUCCESS: "/login-success",
+  TEAM: "/teams",
   ADMIN: {
     DASHBOARD: "/dashboard",
     PROFILE: "/profile",
