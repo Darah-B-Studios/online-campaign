@@ -1,8 +1,8 @@
 import React from "react";
 import { AppShell } from "../components";
 import "../styles/home-page.style.scss";
-import { Button, Typography, Card } from "antd";
-const { Title, Text } = Typography;
+import { Button, Typography } from "antd";
+const { Title } = Typography;
 
 const HomePage = () => {
   const eitheenNov = new Date("11/18/2022");
@@ -47,13 +47,19 @@ const HomePage = () => {
         </div>
         <Card
           className="world_map"
-          title={<h2 style={{ background: '#a9b8d1', padding: '.5rem 1rem', textAlign: 'center', color: '#232a3c'}}>Make your steps count</h2>}
-          cover={
-            <img
-              alt="example"
-              src="/images/map-2.png"
-            />
+          title={
+            <h2
+              style={{
+                background: "#a9b8d1",
+                padding: ".5rem 1rem",
+                textAlign: "center",
+                color: "#232a3c",
+              }}
+            >
+              Make your steps count
+            </h2>
           }
+          cover={<img alt="example" src="/images/map-2.png" />}
         />
       </div>
     </AppShell>

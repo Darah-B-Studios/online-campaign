@@ -5,29 +5,30 @@ import { LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../routes";
 import { supabase } from "../supaBaseClient";
-import { useInitialData } from "../hooks/InitialData";
 import { useAppStore } from "../contexts/AppStoreContext";
 
 const LoginPage = () => {
-    const { loadUserInitialData } = useInitialData()
     const [loading, setLoading] = useState(false)
+    const [errorMessages, setErrorMessages] = useState(null)
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const {setUser} = useAppStore()
 
     const onFinish = async ({ email, password }) => {
+        console.log('email: ', email)
+        console.log('password: ', password)
         setLoading(true);
         const { user, error } = await supabase.auth.signIn({ email, password })
         if (user) {
             setUser(user)
-            console.log('data: ', user)
-            await loadUserInitialData()
+            console.log("current user: ", user)
+            form.resetFields()
             setLoading(false);
+            navigate(ROUTES.LOGIN_SUCCESS)
         }
         if (error) {
-            console.log('errors: ', error)
             setLoading(false);
-            form.resetFields()
+            setErrorMessages(error.message)
             return <Alert message={error.message} closable type="error" />
         }
     }
@@ -46,6 +47,7 @@ const LoginPage = () => {
                 }}
                 onFinish={onFinish}
             >
+                {errorMessages && <Alert type="error" message={errorMessages} style={{marginBottom: '1rem'}} />}
                 <Form.Item
                     name="email"
                     rules={[
