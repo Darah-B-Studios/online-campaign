@@ -11,29 +11,9 @@ const items = [
         icon: <HomeOutlined />,
     },
     {
-        label: 'Service',
-        key: ROUTES.SERVICES,
-        icon: <GiftOutlined />,
-    },
-    {
-        label: 'Blog',
-        key: ROUTES.BLOG,
-        icon: <FileTextOutlined />,
-    },
-    {
-        label: 'Bootcamp',
-        key: ROUTES.BOOTCAMP,
-        icon: <CodeOutlined />,
-    },
-    {
         label: 'About',
         key: ROUTES.ABOUT,
         icon: <RocketOutlined />,
-    },
-    {
-        label: 'Contact',
-        key: ROUTES.CONTACT,
-        icon: <MessageOutlined />,
     },
 ];
 

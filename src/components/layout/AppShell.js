@@ -29,7 +29,7 @@ const AppShell = ({ children }) => {
                     background: '#fff'
                 }}
             >
-                Ant Design &copy; Bless Darah
+                Ant Design &copy; Darah-B Studios
             </Footer>
         </Layout >
     );
