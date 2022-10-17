@@ -5,11 +5,9 @@ import { LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../routes";
 import { supabase } from "../supaBaseClient";
-import { useInitialData } from "../hooks/InitialData";
 import { useAppStore } from "../contexts/AppStoreContext";
 
 const LoginPage = () => {
-    const { loadUserInitialData } = useInitialData()
     const [loading, setLoading] = useState(false)
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -20,12 +18,10 @@ const LoginPage = () => {
         const { user, error } = await supabase.auth.signIn({ email, password })
         if (user) {
             setUser(user)
-            console.log('data: ', user)
-            await loadUserInitialData()
+            console.log("current user: ", user)
             setLoading(false);
         }
         if (error) {
-            console.log('errors: ', error)
             setLoading(false);
             form.resetFields()
             return <Alert message={error.message} closable type="error" />
