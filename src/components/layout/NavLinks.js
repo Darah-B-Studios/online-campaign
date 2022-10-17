@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuOutlined, HomeOutlined, CodeOutlined, GiftOutlined, FileTextOutlined, RocketOutlined, MessageOutlined, LoginOutlined } from '@ant-design/icons';
+import { MenuOutlined, HomeOutlined, RocketOutlined, LoginOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useMenuContext } from "../../contexts/MenuContext";
 import { ROUTES } from "../../routes";

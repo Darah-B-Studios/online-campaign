@@ -2,7 +2,7 @@ import React from "react";
 import { AppShell } from "../components";
 import "../styles/home-page.style.scss";
 import { Button, Typography } from "antd";
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const HomePage = () => {
   const eitheenNov = new Date("11/18/2022");

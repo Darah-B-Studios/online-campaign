@@ -1,7 +1,7 @@
 import './App.less';
 import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from './routes';
-import {LoginPage, SignUpPage, HomePage } from './pages';
+import {LoginPage, SignUpPage, HomePage, LoginSuccessPage } from './pages';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -13,6 +13,7 @@ const App = () => {
                 <Route path={ROUTES.SIGN_UP} element={<SignUpPage />} />
                 <Route path={ROUTES.LOGIN} element={<LoginPage />} />
                 <Route exact path={ROUTES.ABOUT} element={<AboutPage />} />
+                <Route exact path={ROUTES.LOGIN_SUCCESS} element={<LoginSuccessPage />} />
 
                 {/* 404 page */}
                 <Route path="*" element={<NotFoundPage />} />

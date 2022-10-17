@@ -1,19 +1,29 @@
 import React, { useState } from "react";
 import { AppShell } from "../components";
-import { Typography, Form, Input, Button, Row, Col } from "antd"
-import { UserOutlined, LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
+import { Typography, Form, Input, Button, Alert } from "antd"
+import { LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
 import "../styles/login-page.scss"
 import { ROUTES } from "../routes";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../supaBaseClient";
 
 const SignUpPage = () => {
     const [loading, setLoading] = useState(false)
     const [form] = Form.useForm();
     const navigate = useNavigate();
+    const [errorMessages, setErrorMessages] = useState(null)
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         setLoading(true);
-        console.log('values:', values);
+        const {user, error} = await supabase.auth.signUp({email: values.email, password: values.password})
+        if(error) {
+            console.log('Error: ', error)
+            setErrorMessages(error.message)
+        }
+        if(user) {
+            console.log('user', user)
+            navigate(ROUTES.LOGIN_SUCCESS)
+        }
         setLoading(false);
         form.resetFields()
     }
@@ -22,45 +32,15 @@ const SignUpPage = () => {
         <AppShell>
             <div style={{ textAlign: 'center', margin: '2rem 0' }}>
                 <Typography.Title>Sign up</Typography.Title>
-                <Typography.Paragraph>Setup your account now and start learning all the required skills</Typography.Paragraph>
+                <Typography.Paragraph>Setup your account to be part of this campaign</Typography.Paragraph>
             </div>
             <Form
                 form={form}
                 name="normal_login"
                 className="login-form"
-                initialValues={{
-                    remember: true,
-                }}
                 onFinish={onFinish}
             >
-                <Row gutter={[8, 8]}>
-                    <Col xs={24} md={12}>
-                        <Form.Item
-                            name="firstName"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your first name!',
-                                },
-                            ]}
-                        >
-                            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="First name" />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} md={12}>
-                        <Form.Item
-                            name="lastName"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your last name!',
-                                },
-                            ]}
-                        >
-                            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Last name" />
-                        </Form.Item>
-                    </Col>
-                </Row>
+                {errorMessages && <Alert type="error" message={errorMessages} style={{marginBottom: '1rem'}} />}
                 <Form.Item
                     name="email"
                     rules={[
