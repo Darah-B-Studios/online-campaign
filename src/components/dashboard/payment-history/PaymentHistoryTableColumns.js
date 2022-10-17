@@ -20,7 +20,7 @@ export const paymentHistoryTableColumns = [
         title: 'Status',
         dataIndex: 'status',
         key: 'status',
-        render: (_, row) => <Tag color={row.status === 'complete' ? 'green' : 'orange'}>{row.status}</Tag>
+        render: (_, row) => <Tag color={row.status === 'complete' ? 'green' : 'orange'}>{row.status ?? "none"}</Tag>
     }
 ]
 

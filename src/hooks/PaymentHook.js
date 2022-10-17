@@ -10,7 +10,7 @@ export const usePayment = () => {
 
 
     const collect = async (paymentData) => {
-        const res = await paymentService.collect(paymentData)
+        const res = await paymentService.pay(paymentData)
         if (res.success) {
             console.log('transaction: ', res)
             const transaction = {

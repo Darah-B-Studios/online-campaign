@@ -7,18 +7,26 @@ import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../../contexts/AppStoreContext";
 import PaymentHistoryTable from "../../components/dashboard/payment-history/PaymentHistoryTable";
 import VideoResources from "../../components/dashboard/video-resources/VideoResourceList";
+import { supabase } from "../../supaBaseClient";
 
 const DashboardPage = () => {
     const navigate = useNavigate()
-    const { user } = useAppStore()
+    const { user, setUser, payments } = useAppStore()
     const [activeTab, setActiveTab] = useState('1');
-
-    const handleLogout = () => {
-        console.log('logout')
+        
+    console.log('payments: ', payments)
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        if (error)
+            console.log('logout', error)
+        else {
+            setUser(null)
+            navigate(ROUTES.HOME)
+        }
     }
 
     useEffect(() => {
-        if (!user) {
+        if (!supabase.auth.user() || !user) {
             return navigate(ROUTES.LOGIN)
         }
 
@@ -37,7 +45,7 @@ const DashboardPage = () => {
                     </Breadcrumb>
                     <div style={{ marginTop: '2rem', display: 'flex', justifyContent: "space-between", alignItems: 'center' }}>
                         <Typography.Title>Dashboard</Typography.Title>
-                        <Button onClick={() => handleLogout}>Logout</Button>
+                        <Button onClick={handleLogout}>Logout</Button>
                     </div>
                     <Button type="primary" onClick={() => navigate(ROUTES.REQUEST_PAYMENT)} icon={<DollarOutlined />}>Pay now</Button>
                     <Tabs

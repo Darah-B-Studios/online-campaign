@@ -3,6 +3,7 @@ import { useAppStore } from "../contexts/AppStoreContext"
 import { TABLES } from "../constants/tables"
 import { ROUTES } from "../routes"
 import { supabase } from "../supaBaseClient"
+import { useEffect } from "react"
 
 export const useInitialData = () => {
     const navigate = useNavigate()
@@ -21,13 +22,12 @@ export const useInitialData = () => {
         }
     }
 
-    const getUserData = async (userInfo) => {
-        console.log('current user: ', user)
-        const { data, error } = await supabase.from(TABLES.USER_DATA).select().match({ code: userInfo.id })
+    const getUserData = async () => {
+        const { data, error } = await supabase.from(TABLES.USER_DATA).select().match({ code: user.id })
         if (data) {
             console.log('user data: ', data)
             setUser({
-                ...userInfo,
+                ...user,
                 firstName: data.at(0).firstName,
                 lastName: data.at(0).lastName,
                 hasPayed: data.at(0).hasPayed
@@ -42,6 +42,8 @@ export const useInitialData = () => {
             console.log('error: ', error)
         }
     }
+
+    useEffect(() => { }, [user])
 
     return {
         loadUserInitialData: getUserData

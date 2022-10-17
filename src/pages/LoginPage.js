@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AppShell } from "../components";
-import { Form, Typography, Input, Button } from 'antd'
+import { Form, Typography, Input, Button, Alert } from 'antd'
 import { LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../routes";
@@ -19,15 +19,16 @@ const LoginPage = () => {
         setLoading(true);
         const { user, error } = await supabase.auth.signIn({ email, password })
         if (user) {
+            setUser(user)
             console.log('data: ', user)
-            setUser(prevUser => user)
-            await loadUserInitialData(user)
+            await loadUserInitialData()
             setLoading(false);
         }
         if (error) {
             console.log('errors: ', error)
             setLoading(false);
             form.resetFields()
+            return <Alert message={error.message} closable type="error" />
         }
     }
     return (

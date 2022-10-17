@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AppStoreContext = createContext({})
 
 export const AppStoreProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [users, setUsers] = useState([])
     const [payments, setPayments] = useState(null)
 
