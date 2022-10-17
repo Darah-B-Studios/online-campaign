@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuOutlined, HomeOutlined, CodeOutlined, GiftOutlined, FileTextOutlined, RocketOutlined, MessageOutlined } from '@ant-design/icons';
+import { MenuOutlined, HomeOutlined, CodeOutlined, GiftOutlined, FileTextOutlined, RocketOutlined, MessageOutlined, LoginOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useMenuContext } from "../../contexts/MenuContext";
 import { ROUTES } from "../../routes";
@@ -14,6 +14,11 @@ const items = [
         label: 'About',
         key: ROUTES.ABOUT,
         icon: <RocketOutlined />,
+    },
+    {
+        label: 'Login',
+        key: ROUTES.LOGIN,
+        icon: <LoginOutlined />,
     },
 ];
 
