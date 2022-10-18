@@ -1,7 +1,7 @@
 import React from "react";
 import { AppShell } from "../components";
 import "../styles/home-page.style.scss";
-import { Button, Typography } from "antd";
+import { Button, Typography, Card } from "antd";
 const { Title } = Typography;
 
 const HomePage = () => {
