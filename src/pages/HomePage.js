@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const { Title } = Typography;
 
 const HomePage = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const eitheenNov = new Date("11/18/2022");
   const now = new Date();
   const diff = eitheenNov.getTime() - now.getTime();
@@ -26,22 +26,30 @@ const HomePage = () => {
               <sup>th</sup> of November
             </p>
             <p>{totalDaysLeft} days to walk</p>
-              <Space>
-                    <Button
-                      type="primary"
-                      style={{ marginTop: 25 }}
-                      className="get_started__btn"
-                    >
-                      Get started
-                    </Button>
-                    <Button
-                      type="primary"
-                      style={{ marginTop: 25 }}
-                      onClick={() => navigate(ROUTES.TEAM)}
-                    >
-                      Create team
-                    </Button>
-              </Space>
+            <Space>
+              <Button
+                type="primary"
+                style={{ marginTop: 25 }}
+                className="get_started__btn"
+              >
+                Get started
+              </Button>
+              <Button
+                type="primary"
+                style={{ marginTop: 25 }}
+                onClick={() => navigate(ROUTES.TEAM)}
+              >
+                Create team
+              </Button>
+
+              <Button
+                type="primary"
+                style={{ marginTop: 25 }}
+                onClick={() => navigate(ROUTES.ORGANIZATION)}
+              >
+                Create organization
+              </Button>
+            </Space>
           </div>
         </div>
       </div>
