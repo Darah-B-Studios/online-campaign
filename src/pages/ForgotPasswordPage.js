@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { AppShell } from "../components";
 import { Form, Typography, Input, Button, Alert, Space } from 'antd'
-import { LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
+import { RedEnvelopeOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../routes";
 import { supabase } from "../supaBaseClient";
 import { useAppStore } from "../contexts/AppStoreContext";
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
     const [loading, setLoading] = useState(false)
     const [errorMessages, setErrorMessages] = useState(null)
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const {setUser} = useAppStore()
 
-    const onFinish = async ({ email, password }) => {
-        console.log('email: ', email)
-        console.log('password: ', password)
+    const onFinish = async ({ email }) => {
         setLoading(true);
-        const { user, error } = await supabase.auth.signIn({ email, password })
+        const { user, error } = await supabase.auth.resetPasswordForEmail(email, {redirectTo: 'localhost:3000/reset-password'})
         if (user) {
             setUser(user)
             console.log("current user: ", user)
@@ -35,16 +33,13 @@ const LoginPage = () => {
     return (
         <AppShell>
             <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-                <Typography.Title>Sign in</Typography.Title>
-                <Typography.Paragraph>Welcome back, we're happy you want to continure learning</Typography.Paragraph>
+                <Typography.Title>Forgot Password</Typography.Title>
+                <Typography.Paragraph>Provide your email address and we'll send a reset link</Typography.Paragraph>
             </div>
             <Form
                 form={form}
-                name="normal_login"
                 className="login-form"
-                initialValues={{
-                    remember: true,
-                }}
+                name="password-reset"
                 onFinish={onFinish}
             >
                 {errorMessages && <Alert type="error" message={errorMessages} style={{marginBottom: '1rem'}} />}
@@ -63,34 +58,15 @@ const LoginPage = () => {
                         placeholder="Email"
                     />
                 </Form.Item>
-                <Form.Item
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your Password!',
-                        },
-                    ]}
-                >
-                    <Input
-                        prefix={<LockOutlined className="site-form-item-icon" />}
-                        type="password"
-                        placeholder="Password"
-                    />
-                </Form.Item>
-                <Typography.Paragraph>
-                    Don't have an account?
-                    <Button type="link" onClick={() => navigate(ROUTES.SIGN_UP)}>Sign up</Button>
-                </Typography.Paragraph>
-                <Space>
-                    <Button disabled={loading} loading={loading} type="primary" htmlType="submit" className="login-form-button">
-                        Sign in
+                <Space direction="vertical" style={{width: '100%'}}>
+                    <Button disabled={loading} block loading={loading} type="primary" htmlType="submit" className="login-form-button">
+                        Send reset link
                     </Button>
-                    <Button type="link" onClick={() => navigate(ROUTES.FORGOT_PASSWORD)}>Forgot password</Button>
+                    <Button type="ghost" block onClick={() => navigate(-1)}>Back</Button>
                 </Space>
             </Form>
         </AppShell>
     )
 }
 
-export default LoginPage
+export default ForgotPasswordPage

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AppShell } from "../components";
-import { Form, Typography, Input, Button, Alert, Space } from 'antd'
+import { Form, Typography, Input, Button, Alert } from 'antd'
 import { LockOutlined, RedEnvelopeOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../routes";
@@ -82,12 +82,11 @@ const LoginPage = () => {
                     Don't have an account?
                     <Button type="link" onClick={() => navigate(ROUTES.SIGN_UP)}>Sign up</Button>
                 </Typography.Paragraph>
-                <Space>
+                <Form.Item>
                     <Button disabled={loading} loading={loading} type="primary" htmlType="submit" className="login-form-button">
                         Sign in
                     </Button>
-                    <Button type="link" onClick={() => navigate(ROUTES.FORGOT_PASSWORD)}>Forgot password</Button>
-                </Space>
+                </Form.Item>
             </Form>
         </AppShell>
     )

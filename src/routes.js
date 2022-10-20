@@ -4,6 +4,7 @@ export const ROUTES = {
   CONTACT: "/contact",
   LOGIN: "/login",
   SIGN_UP: "/signup",
+  FORGOT_PASSWORD: "/forgot-password",
   LOGIN_SUCCESS: "/login-success",
   TEAM: "/teams",
   ADMIN: {
