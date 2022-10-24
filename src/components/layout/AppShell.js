@@ -10,8 +10,8 @@ const AppShell = ({ children }) => {
         <Layout className="layout">
             <Header style={{ display: 'flex', justifyContent: 'space-between', background: '#fff' }}>
                 <div style={{ width: '20rem !important', fontSize: '1.2rem', fontWeight: '500' }}>
-                    <span>Darah-B </span>
-                    <span>Studios</span>
+                    <span>Online </span>
+                    <span>Campaign</span>
                 </div>
                 <NavLinks style={{ minWidth: 0 }} className="navbar_links" />
             </Header>
