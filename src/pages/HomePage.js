@@ -26,7 +26,7 @@ const HomePage = () => {
              <header className="header">
                 <h2 className="header__title">Become <span className="header__title_decorated">part of the movement</span> ,Protect kids.</h2>
                 <p className="header__text">Join us for the walk on solidarity <strong>18</strong><sup>th</sup> <span>{totalDaysLeft}</span> days to walk</p>
-                <button className="button button_primary" onClick={() => navigate(ROUTES.JOIN)}>Get started</button>
+                <button className="button button_primary" onClick={() => navigate(ROUTES.JOIN)}>Join now</button>
             </header>
 
        <div style={{marginTop: '1rem'}}>

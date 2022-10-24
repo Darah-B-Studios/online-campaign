@@ -78,8 +78,8 @@ const JoinPage = () => {
     return (
         <AppShell>
             <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-                <Typography.Title>Join the campaign</Typography.Title>
-                <Typography.Paragraph>Get registered now for the campaign</Typography.Paragraph>
+                <Typography.Title>Join the movement</Typography.Title>
+                <Typography.Paragraph>Be a part of the movement to protect children</Typography.Paragraph>
             </div>
             <Form
                 form={form}
