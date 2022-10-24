@@ -24,8 +24,8 @@ const HomePage = () => {
       </Col>
       <Col md={12}>
              <header className="header">
-                <h2 className="header__title">Become <span className="header__title_decorated">part of the movement</span> ,Protect kids.</h2>
-                <p className="header__text">Join us for the walk on solidarity <strong>18</strong><sup>th</sup> <span>{totalDaysLeft}</span> days to walk</p>
+                <h2 className="header__title">Become <span className="header__title_decorated">part of the movement,</span> Protect kids.</h2>
+                <p className="header__text">World day for the prevention and healing of child sexual abuse and violence.</p>
                 <button className="button button_primary" onClick={() => navigate(ROUTES.JOIN)}>Join now</button>
             </header>
 
