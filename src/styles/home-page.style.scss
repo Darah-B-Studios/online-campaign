@@ -42,34 +42,34 @@
 }
 
 .hero_section {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .hero_section__one {
-    background-image: url('../../public/images/wave.png');
-    height: 400px;
-    width: 100%;
-    background-repeat: no-repeat;
-    margin-left: 0 !important;
+  background-image: url("../../public/images/wave.png");
+  height: 400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  margin-left: 0 !important;
 }
 
 .hero_section__two {
-    background-image: url('../../public/images/wave.png');
-    height: 400px;
-    width: 100%;
-    background-repeat: no-repeat;
-    margin-left: 0 !important;
-    transform: rotate(180deg);
+  background-image: url("../../public/images/wave.png");
+  height: 400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  margin-left: 0 !important;
+  transform: rotate(180deg);
 }
 
 .world_map {
-    position: absolute;
-    bottom: 200px;
-    left: 40px;
-    width: 800px;
-    height: 500px;
-    box-shadow: 1px 3px 8px #eeebeb;
+  position: absolute;
+  bottom: 200px;
+  left: 40px;
+  width: 800px;
+  height: 500px;
+  box-shadow: 1px 3px 8px #eeebeb;
 }
 @media screen and (min-width: 768px) {
   .landing_page__banner {

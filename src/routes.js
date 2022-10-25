@@ -8,7 +8,7 @@ export const ROUTES = {
   FORGOT_PASSWORD: "/forgot-password",
   LOGIN_SUCCESS: "/login-success",
   TEAM: "/teams",
-  ORGANIZATION: 'organizations',
+  ORGANIZATION: "organizations",
   ADMIN: {
     DASHBOARD: "/dashboard",
     PROFILE: "/profile",
