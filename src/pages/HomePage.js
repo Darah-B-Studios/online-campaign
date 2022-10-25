@@ -4,6 +4,8 @@ import "../styles/home-page.style.scss";
 import { Button, Card, Space, Typography } from "antd";
 import { ROUTES } from "../routes";
 import { useNavigate } from "react-router-dom";
+import { useMapData } from "../hooks/useMapData.hook";
+
 const { Title } = Typography;
 
 const HomePage = () => {
@@ -13,11 +15,13 @@ const HomePage = () => {
   const diff = eitheenNov.getTime() - now.getTime();
   const totalDaysLeft = Math.ceil(diff / (1000 * 3600 * 24));
 
+  const { data } = useMapData();
+  console.log("data: ", data)
   return (
     <AppShell>
       {/* banner section */}
       <div className="landing_page__banner">
-        <img src="/images/background-1.jpg" alt="landing page banner image" />
+        <img src="/images/background-1.jpg" alt="landing page banner item" />
         <div className="overlay">
           <div className="overlay__caption">
             <Title>Be part of the movement to protect children</Title>
@@ -82,6 +86,8 @@ const HomePage = () => {
           cover={<img alt="example" src="/images/map-2.png" />}
         />
       </div>
+
+      <div className="canvas"></div>
     </AppShell>
   );
 };
