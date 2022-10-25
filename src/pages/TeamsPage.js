@@ -1,17 +1,32 @@
-import { Alert, Button, Form, Input, message, Space, Typography } from "antd";
-import React, { useState } from "react";
+import { Alert, Button, Form, Input, message, Select, Space, Typography } from "antd";
+import React, { useCallback, useEffect, useState } from "react";
 import { AppShell } from "../components";
+import { TABLES } from "../constants/tables";
 import { supabase } from "../supaBaseClient";
 
 /**
 * @typedef {Object} Team
 * @property {string} name
 * @property {string} email
+* @property {number} organization
 */
 const TeamsPage = () => {
     const [form] = Form.useForm()
     const [loading, setLoading] = useState(false)
+    const [organizations, setOrganizations] = useState([])
     const [errorMessage, setErrorMessage] = useState(null)
+    const {Option} = Select
+
+    const getOrganizations = useCallback(async() => {
+        const {data, error} = await supabase.from('organization').select()
+        if(data) {
+            setOrganizations(data)
+            console.log('organizations: ', data)
+        }
+        if(error) {
+            console.log("error: ", error.message)
+        }
+    }, [])
 
     /**
         * @function onFinish
@@ -20,9 +35,9 @@ const TeamsPage = () => {
         */
     const onFinish = async (formData) => {
         setLoading(true)
-        const {data, error} = await supabase.from('teams').insert(formData)
+        setErrorMessage(null)
+        const {data, error} = await supabase.from(TABLES.TEAMS).insert(formData)
         if(data) {
-            setErrorMessage(null)
             form.resetFields()
             setLoading(false)
             message.success(`You have successfully created the ${formData.name} team`)
@@ -33,7 +48,10 @@ const TeamsPage = () => {
             setLoading(false)
         }
     }
-
+    
+    useEffect(() => {
+        getOrganizations()
+    }, [])
     return (
         <AppShell>
             <div style={{width: '30rem', margin: '2rem auto'}}>
@@ -50,6 +68,23 @@ const TeamsPage = () => {
                     form={form}
                     onFinish={onFinish}
                 >
+                    <Form.Item
+                        name="organizationId"
+                        label="Select organization"
+                        labelCol={24}
+                        rules={[{
+                            required: true,
+                            message: "organization name is required"
+                        }]}
+                    >
+                        <Select>
+                            {
+                                organizations.map((organization, index) => (
+                                    <Option key={index} value={organization.id}>{organization.name}</Option>
+                                ))
+                            }
+                        </Select>
+                    </Form.Item>
                     <Form.Item
                         name="name"
                         label="Team name"
