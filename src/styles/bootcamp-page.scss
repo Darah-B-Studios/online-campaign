@@ -2,10 +2,10 @@
 
 .header {
   $padding-top: 1rem;
-  $font-size: 1rem;
+  $font-size: 1.2rem;
 
   text-align: center;
-  margin: 5rem 0;
+  margin: 1rem 0;
 
   &__title {
     padding-top: $padding-top;
@@ -28,7 +28,7 @@
   }
 
   &__text {
-    font-size: 1.3rem;
+    font-size: .8rem;
     margin-top: 1rem;
     color: gray;
     text-align: center;
@@ -62,10 +62,15 @@ ul {
   .header {
     $padding-top: 2rem;
     $font-size: 5rem;
+    margin: 5rem 0;
+
     &__title {
       padding-top: $padding-top;
       font-size: $font-size;
       line-height: 1;
+    }
+    &__text {
+      font-size: 1.3rem;
     }
   }
 }

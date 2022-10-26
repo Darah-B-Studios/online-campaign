@@ -2,7 +2,7 @@ import React from "react";
 import { AppShell, ProfileTable } from "../components";
 import "../styles/home-page.style.scss";
 import "../styles/bootcamp-page.scss";
-import { Button, Card, Col, Row, Space } from "antd";
+import { Card, Col, Row, Space } from "antd";
 import { ROUTES } from "../routes";
 import { useNavigate } from "react-router-dom";
 
@@ -22,48 +22,28 @@ const HomePage = () => {
               Become{" "}
               <span className="header__title_decorated">
                 part of the movement,
-              </span>{" "}
+              </span><br />
               Protect kids.
             </h2>
             <p className="header__text">
               World day for the prevention and healing of child sexual abuse and
               violence.
             </p>
-            <button
-              className="button button_primary"
-              onClick={() => navigate(ROUTES.JOIN)}
-            >
-              Join now
-            </button>
+              <Space>
+                    <button
+                      className="button button_primary"
+                      onClick={() => navigate(ROUTES.JOIN)}
+                    >
+                      Join a team
+                    </button>
+                    <button
+                      className="button button_secondary"
+                      onClick={() => navigate(ROUTES.TEAM)}
+                    >
+                      Start a team
+                    </button>
+              </Space>
           </header>
-
-          <div style={{ marginTop: "1rem" }}>
-            <Space style={{ margin: "0 auto" }}>
-              <Button
-                type="primary"
-                style={{ marginTop: 25 }}
-                className="get_started__btn"
-                onClick={() => navigate(ROUTES.JOIN)}
-              >
-                Get started
-              </Button>
-              <Button
-                type="primary"
-                style={{ marginTop: 25 }}
-                onClick={() => navigate(ROUTES.TEAM)}
-              >
-                Create team
-              </Button>
-
-              <Button
-                type="primary"
-                style={{ marginTop: 25 }}
-                onClick={() => navigate(ROUTES.ORGANIZATION)}
-              >
-                Create organization
-              </Button>
-            </Space>
-          </div>
         </Col>
       </Row>
       <ProfileTable />

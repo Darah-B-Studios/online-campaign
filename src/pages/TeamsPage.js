@@ -9,8 +9,10 @@ import {
   Typography,
 } from "antd";
 import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppShell } from "../components";
 import { TABLES } from "../constants/tables";
+import { ROUTES } from "../routes";
 import { supabase } from "../supaBaseClient";
 
 /**
@@ -24,13 +26,13 @@ const TeamsPage = () => {
   const [loading, setLoading] = useState(false);
   const [organizations, setOrganizations] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate()
   const { Option } = Select;
 
   const getOrganizations = useCallback(async () => {
     const { data, error } = await supabase.from("organization").select();
     if (data) {
       setOrganizations(data);
-      console.log("organizations: ", data);
     }
     if (error) {
       console.log("error: ", error.message);
@@ -65,7 +67,7 @@ const TeamsPage = () => {
   }, []);
   return (
     <AppShell>
-      <div style={{ width: "30rem", margin: "2rem auto" }}>
+      <div style={{ width: "30rem", margin: "2rem auto", maxWidth: '100%' }}>
         <div style={{ textAlign: "center" }}>
           <Typography.Title>Create a team</Typography.Title>
           <Typography.Paragraph>Create your own team here</Typography.Paragraph>
@@ -138,6 +140,9 @@ const TeamsPage = () => {
               Reset
             </Button>
           </Space>
+        
+        <Typography.Paragraph>Didn't see your organization? <Button type="link" onClick={() => navigate(ROUTES.ORGANIZATION)}>Create your organization</Button></Typography.Paragraph>
+
         </Form>
       </div>
     </AppShell>

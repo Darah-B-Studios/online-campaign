@@ -7,8 +7,10 @@ import {
   QrcodeOutlined,
 } from "@ant-design/icons";
 import { supabase } from "../supaBaseClient";
+import { useInitialData } from "../hooks/InitialData";
 
 const JoinPage = () => {
+  const {getCountryData} = useInitialData()
   const [loading, setLoading] = useState(false);
   const [isLoadingInit, setIsLoadingInit] = useState(false);
   const [teams, setTeams] = useState([]);
@@ -43,23 +45,6 @@ const JoinPage = () => {
     }
   };
 
-  const getCountryData = useCallback(async () => {
-    try {
-      const data = await fetch("https://restcountries.com/v3.1/all");
-      let countries = await data.json();
-      countries = countries.map((country) => {
-        return {
-          name: country.name.common,
-          flag: country.flag,
-          code: country.cca3,
-        };
-      });
-      setCountries(countries);
-    } catch (err) {
-      console.log("countries error: ", err);
-    }
-  }, []);
-
   const getTeams = useCallback(async () => {
     const { data, error } = await supabase.from("teams").select();
     if (data) {
@@ -73,7 +58,8 @@ const JoinPage = () => {
 
   useEffect(() => {
     setIsLoadingInit(true);
-    getCountryData();
+    const countries = getCountryData()
+    if(countries){setCountries(countries)}
     getTeams();
     setIsLoadingInit(false);
   }, []);

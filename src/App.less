@@ -3,12 +3,13 @@
 @green: rgb(74, 222, 128);
 @blue: rgb(59, 130, 246);
 @indigo: rgb(168, 85, 247);
+
 .button {
   border: none;
   outline: none;
   border-radius: 4px;
-  padding: 0.65rem 1.8rem;
-  font-size: 1.1rem;
+  padding: 0.4rem 1rem;
+  font-size: .8rem;
   box-shadow: 1px 3px 13px #00000028;
   opacity: 1;
   transition: all 200ms ease-in-out;
@@ -31,8 +32,21 @@
   background-size: 150%;
   color: #fff;
 }
+.button_secondary {
+  background: linear-gradient(to right, @green, @blue);
+  background-size: 170%;
+  color: #fff;
+}
 
 .fluid__image {
   max-width: 100%;
   height: auto;
+}
+
+@media screen and (min-width: 768px)
+{
+    .button {
+      padding: 0.65rem 1.8rem;
+      font-size: 1.1rem;
+    }
 }
