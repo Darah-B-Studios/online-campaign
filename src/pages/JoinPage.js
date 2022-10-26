@@ -56,12 +56,17 @@ const JoinPage = () => {
     }
   }, []);
 
+
+    const loadData = useCallback(async() => {
+        setIsLoadingInit(true);
+        const countries = await getCountryData()
+        if(countries){setCountries(countries)}
+        getTeams();
+        setIsLoadingInit(false);
+    }, [])
+
   useEffect(() => {
-    setIsLoadingInit(true);
-    const countries = getCountryData()
-    if(countries){setCountries(countries)}
-    getTeams();
-    setIsLoadingInit(false);
+      loadData()
   }, []);
 
   return (
