@@ -13,8 +13,8 @@ const HomePage = () => {
   const diff = eitheenNov.getTime() - now.getTime();
   const totalDaysLeft = Math.ceil(diff / (1000 * 3600 * 24));
 
-  const { data } = useMapData();
-  console.log("data: ", data)
+  // const { data } = useMapData();
+  // console.log("data: ", data)
   return (
     <AppShell>
       {/* banner section */}
