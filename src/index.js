@@ -1,22 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import { MenuProvider } from './contexts/MenuContext';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom'
-import { AppStoreProvider } from './contexts/AppStoreContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { MenuProvider } from "./contexts/MenuContext";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { AppStoreProvider } from "./contexts/AppStoreContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <AppStoreProvider>
-                <MenuProvider>
-                    <App />
-                </MenuProvider>
-            </AppStoreProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <AppStoreProvider>
+        <MenuProvider>
+          <App />
+        </MenuProvider>
+      </AppStoreProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
