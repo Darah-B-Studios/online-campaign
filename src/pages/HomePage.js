@@ -1,10 +1,11 @@
 import React from "react";
-import { AppShell, ProfileTable, WorldMap } from "../components";
+import { AggregateChart, AppShell, ProfileTable, WorldMap } from "../components";
 import "../styles/home-page.style.scss";
 import "../styles/bootcamp-page.scss";
 import { Card, Col, Row, Space } from "antd";
 import { ROUTES } from "../routes";
 import { useNavigate } from "react-router-dom";
+import AggregateTable from "../components/AggreateTable";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ const HomePage = () => {
       <Row gutter={[16, 32]} style={{ marginTop: "3rem" }}>
         <Col md={12}>
           <Card cover={<WorldMap />} bordered={false}/>
-          
         </Col>
         <Col md={12}>
           <header className="header">
@@ -48,12 +48,15 @@ const HomePage = () => {
           </header>
         </Col>
       </Row>
-        <Row>
-      <Col md={16}>
-      </Col>
-      <Col md={8}>
-      <ProfileTable />
-      </Col>
+      <Row gutter={[16, 32]}>
+          <Col md={12}>
+            <Card size="small" cover={<AggregateChart />}>
+                <AggregateTable />
+            </Card>
+          </Col>
+          <Col md={12}>
+              <ProfileTable />
+          </Col>
       </Row>
     </AppShell>
   );

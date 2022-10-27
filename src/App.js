@@ -1,4 +1,5 @@
 import "./App.less";
+import '@toast-ui/chart/dist/toastui-chart.min.css';
 import { Route, Routes } from "react-router-dom";
 import { ROUTES } from "./routes";
 import {
