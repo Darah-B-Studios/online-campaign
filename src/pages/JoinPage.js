@@ -79,6 +79,7 @@ const JoinPage = () => {
       </div>
       <Form
         form={form}
+        onLoadedData
         layout="vertical"
         name="join-campaign-form"
         className="login-form"

@@ -1,26 +1,34 @@
 import { Table } from "antd";
 import React, { useCallback, useEffect, useState } from "react";
 import { TABLES } from "../constants/tables";
+import { useAppStore } from "../contexts/AppStoreContext";
 import { useInitialData } from "../hooks/InitialData";
 import { supabase } from "../supaBaseClient";
 import { profileTableColumn } from "./ProfileTableColumns";
 
 const ProfileTable = () => {
+    const {setAggregate} = useAppStore()
     const {getCountryData} = useInitialData()
     const [profiles, setProfiles] = useState([])
-    const [teams, setTeams] = useState([])
     const [loading, setLoading] = useState(false)
 
     const getProfiles = useCallback(async() => {
         const {data, errors} = await supabase.from(TABLES.PROFILES).select()
         if(data.length > 0) {
             setLoading(true)
-            await getTeams()
+            const teamsData = await getTeams()
+            const agg = teamsData.map(item => {
+                return {
+                    ...item,
+                    total: data.filter(datum => datum.teamId.toString() === item.id.toString())?.length
+                }
+            });
+            setAggregate(agg)
             const countryData = await getCountryData()
             const mappedProfiles = data.map(item => {
                 return {
                     ...item,
-                    teamId: teams.find(team => team.id.toString() === item.teamId)?.name,
+                    teamId: teamsData.find(team => team.id.toString() === item.teamId)?.name,
                     countryCode: countryData.find(country => item.countryCode === country.code)?.name
                 }
             })
@@ -31,7 +39,7 @@ const ProfileTable = () => {
 
     const getTeams = async() => {
         const {data, errors} = await supabase.from(TABLES.TEAMS).select()
-            if(data) {setTeams(data)}
+            if(data) {return data}
             if(errors) {console.log("errors: ", errors)}
       }
 
@@ -39,7 +47,7 @@ const ProfileTable = () => {
         getProfiles()
     }, [])
 
-  return (profiles.length > 0 && <Table size="small" loading={loading} dataSource={profiles} columns={profileTableColumn} />)
+  return (profiles.length > 0 && <Table size="small" rowKey='id' loading={loading} dataSource={profiles} columns={profileTableColumn} />)
 };
 
 export default ProfileTable;

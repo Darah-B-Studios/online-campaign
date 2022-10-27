@@ -46,7 +46,13 @@ const HomePage = () => {
           </header>
         </Col>
       </Row>
+        <Row>
+      <Col md={16}>
+      </Col>
+      <Col md={8}>
       <ProfileTable />
+      </Col>
+      </Row>
     </AppShell>
   );
 };
