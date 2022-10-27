@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
-import * as d3 from "d3";
-import jsonUrl from "../data/world/world-detailed.json";
+import { useEffect, useState } from "react";
+import { feature } from "topojson-client";
 
 export const useMapData = () => {
-  const [data, setData] = useState(null);
+  const [geographies, setGeographies] = useState([]);
 
   useEffect(() => {
-    d3.json(jsonUrl).then((tpJson) => {
-      setData(tpJson);
-    });
+    fetch("https://vega.github.io/vega-datasets/data/world-110m.json")
+      .then((response) => response.json())
+      .then((worldData) => {
+        console.log(worldData.objects)
+        setGeographies(feature(worldData, worldData.objects.countries).features)
+      }).catch(error => console.log(error))
   }, []);
-
-  return { data };
+  return { geographies };
 };
