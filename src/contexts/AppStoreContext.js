@@ -3,20 +3,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AppStoreContext = createContext({});
 
 export const AppStoreProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [users, setUsers] = useState([]);
-  const [payments, setPayments] = useState(null);
+  const [aggregate, setAggregate] = useState([])
 
   const values = {
-    user,
-    setUser,
-    users,
-    setUsers,
-    payments,
-    setPayments,
+      aggregate, setAggregate
   };
 
-  useEffect(() => {}, [user, payments, users]);
+  useEffect(() => {}, [aggregate]);
   return (
     <AppStoreContext.Provider value={values}>
       {children}

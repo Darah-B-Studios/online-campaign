@@ -1,4 +1,9 @@
 @import "./colors.scss";
+
+.toastui-chart-wrapper:nth-child(1) {
+    display: none;
+}
+
 .landing_page__banner {
   img {
     width: 100%;
