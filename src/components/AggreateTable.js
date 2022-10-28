@@ -1,12 +1,10 @@
 import { Table } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { useAppStore } from "../contexts/AppStoreContext";
 import { aggregateTableColumns } from "./AggregateTableColumns";
 
 const AggregateTable = () => {
     const {aggregate} = useAppStore()
-    useEffect(() => {
-    }, [aggregate])
 
     return (
         <>

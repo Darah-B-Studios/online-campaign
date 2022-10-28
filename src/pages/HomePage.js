@@ -50,7 +50,8 @@ const HomePage = () => {
       </Row>
       <Row gutter={[16, 32]}>
           <Col md={12}>
-            <Card size="small" cover={<AggregateChart />}>
+            <Card size="small">
+                <AggregateChart />
                 <AggregateTable />
             </Card>
           </Col>
