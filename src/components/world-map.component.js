@@ -13,10 +13,10 @@ const WorldMap = () => {
 
   const [data, setData] = useState([]);
   const [hovering, setHovering] = useState(false);
+  const [country, setCountry] = useState(null);
+  const [ref, setRef] = useState(null);
 
   let arr = [];
-
-  const circleRef = React.createRef();
 
   const handleCountryClick = (countryIndex, d) => {
     console.log("d: ", d);
@@ -36,6 +36,8 @@ const WorldMap = () => {
       })
     );
     setData(arr);
+    const circleRef = React.createRef();
+    setRef(circleRef);
   }, [cities]);
 
   if (geographies && geographies.length <= 0) {
@@ -45,11 +47,13 @@ const WorldMap = () => {
   const handleMouseOver = (countryIndex, d) => {
     console.log("d: ", d);
     setHovering(true);
+    setCountry(d);
   };
 
   const handleMouseDown = (countryIndex, d) => {
     console.log("d: ", d);
     setHovering(false);
+    setCountry(d);
   };
 
   return (
@@ -60,7 +64,7 @@ const WorldMap = () => {
             return (
               <>
                 <path
-                  ref={circleRef}
+                  ref={ref}
                   key={`path-${i + d.id}`}
                   d={geoPath().projection(projection)(d)}
                   className="country"
@@ -72,7 +76,7 @@ const WorldMap = () => {
                   onMouseOut={() => handleMouseDown(i, d)}
                 />
                 {hovering && (
-                  <TooltipComponent country={d} circleRef={circleRef} />
+                  <TooltipComponent country={country} circleRef={ref} />
                 )}
               </>
             );
