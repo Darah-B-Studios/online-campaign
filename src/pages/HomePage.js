@@ -1,5 +1,10 @@
 import React from "react";
-import { AggregateChart, AppShell, ProfileTable, WorldMap } from "../components";
+import {
+  AggregateChart,
+  AppShell,
+  ProfileTable,
+  WorldMap,
+} from "../components";
 import "../styles/home-page.style.scss";
 import "../styles/bootcamp-page.scss";
 import { Card, Col, Row, Space } from "antd";
@@ -15,7 +20,7 @@ const HomePage = () => {
       {/* banner section */}
       <Row gutter={[16, 32]} style={{ marginTop: "3rem" }}>
         <Col md={12}>
-          <Card cover={<WorldMap />} bordered={false}/>
+          <Card cover={<WorldMap />} bordered={false} />
         </Col>
         <Col md={12}>
           <header className="header">
@@ -49,15 +54,15 @@ const HomePage = () => {
         </Col>
       </Row>
       <Row gutter={[16, 32]}>
-          <Col md={12}>
-            <Card size="small">
-                <AggregateChart />
-                <AggregateTable />
-            </Card>
-          </Col>
-          <Col md={12}>
-              <ProfileTable />
-          </Col>
+        <Col md={12}>
+          <Card size="small">
+            <AggregateChart />
+            <AggregateTable />
+          </Card>
+        </Col>
+        <Col md={12}>
+          <ProfileTable />
+        </Col>
       </Row>
     </AppShell>
   );
