@@ -59,17 +59,28 @@ export const cities = [
 
 export const useMapData = () => {
   const [geographies, setGeographies] = useState([]);
+  const [countries, setCountry] = useState([]);
 
   useEffect(() => {
-    fetch("https://vega.github.io/vega-datasets/data/world-110m.json")
+    // https://vega.github.io/vega-datasets/data/world-110m.json
+    fetch(
+      "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
+    )
       .then((response) => response.json())
       .then((worldData) => {
-        console.log(worldData.objects);
         setGeographies(
-          feature(worldData, worldData.objects.countries).features
+          feature(worldData, worldData.objects.countries1).features
         );
+        setCountry();
       })
       .catch((error) => console.log(error));
+
+    fetch("https://restcountries.com/v2/all")
+      .then((response) => response.json())
+      .then((countries) => {
+        setCountry(countries);
+      })
+      .catch((err) => console.log(err));
   }, []);
-  return { geographies };
+  return { geographies, countries };
 };
