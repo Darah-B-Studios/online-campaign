@@ -38,11 +38,6 @@ const WorldMap = () => {
     setData(arr);
   }, [cities]);
 
-  const cityData = data.filter((d) =>
-    cities.find((c) => c.name.toLowerCase() === d.name.toLowerCase())
-  );
-  console.log("data: ", data);
-  console.log(cityData);
   if (geographies && geographies.length <= 0) {
     return <div>Hello world...</div>;
   }
