@@ -3,10 +3,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AppStoreContext = createContext({});
 
 export const AppStoreProvider = ({ children }) => {
-  const [aggregate, setAggregate] = useState([])
+  const [aggregate, setAggregate] = useState([]);
+  const [profilesData, setProfilesData] = useState([]);
 
   const values = {
-      aggregate, setAggregate
+    aggregate,
+    setAggregate,
+    profilesData,
+    setProfilesData,
   };
 
   useEffect(() => {}, [aggregate]);
