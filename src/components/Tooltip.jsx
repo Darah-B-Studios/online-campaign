@@ -1,5 +1,6 @@
 // import "./tooltip.scss";
 export const TooltipComponent = ({ country, circleRef }) => {
+  console.log(circleRef)
   return (
     <svg width="200" height="100" ref={circleRef.current}>
       <rect
