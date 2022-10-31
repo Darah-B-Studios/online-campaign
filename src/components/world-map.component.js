@@ -3,7 +3,6 @@ import { geoEqualEarth, geoPath } from "d3-geo";
 import { cities, useMapData } from "../hooks/useMapData.hook";
 import "./world-map.style.scss";
 import { TooltipComponent } from "./Tooltip";
-import { useAppStore } from "../contexts/AppStoreContext";
 
 const projection = geoEqualEarth()
   .scale(160)
@@ -11,7 +10,7 @@ const projection = geoEqualEarth()
 
 const WorldMap = () => {
   const { geographies, countries } = useMapData();
-  const { profilesData } = useAppStore();
+  // const { profilesData } = useAppStore();
 
   const [data, setData] = useState([]);
   const [hovering, setHovering] = useState(false);
