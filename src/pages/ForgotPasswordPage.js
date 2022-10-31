@@ -21,7 +21,6 @@ const ForgotPasswordPage = () => {
     });
     if (user) {
       setUser(user);
-      console.log("current user: ", user);
       form.resetFields();
       setLoading(false);
       navigate(ROUTES.LOGIN_SUCCESS);

@@ -15,13 +15,10 @@ const LoginPage = () => {
   const { setUser } = useAppStore();
 
   const onFinish = async ({ email, password }) => {
-    console.log("email: ", email);
-    console.log("password: ", password);
     setLoading(true);
     const { user, error } = await supabase.auth.signIn({ email, password });
     if (user) {
       setUser(user);
-      console.log("current user: ", user);
       form.resetFields();
       setLoading(false);
       navigate(ROUTES.LOGIN_SUCCESS);

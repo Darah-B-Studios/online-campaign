@@ -51,7 +51,7 @@ const JoinPage = () => {
       setTeams(data);
     }
     if (error) {
-      console.log("teams error: ", error);
+      // console.log("teams error: ", error);
       message.error("Oops! something went wrong. Please try again");
     }
   }, []);

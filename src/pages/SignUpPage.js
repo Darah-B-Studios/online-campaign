@@ -20,11 +20,9 @@ const SignUpPage = () => {
       password: values.password,
     });
     if (error) {
-      console.log("Error: ", error);
       setErrorMessages(error.message);
     }
     if (user) {
-      console.log("user", user);
       navigate(ROUTES.LOGIN_SUCCESS);
     }
     setLoading(false);

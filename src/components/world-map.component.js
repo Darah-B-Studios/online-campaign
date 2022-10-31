@@ -11,17 +11,16 @@ const projection = geoEqualEarth()
 
 const WorldMap = () => {
   const { geographies, countries } = useMapData();
+  const { profilesData } = useAppStore();
 
   const [data, setData] = useState([]);
   const [hovering, setHovering] = useState(false);
   const [country, setCountry] = useState(null);
   const [ref, setRef] = useState(null);
-  const { profilesData } = useAppStore();
 
   let arr = [];
 
   const handleCountryClick = (countryIndex, d) => {
-    console.log("d: ", d);
     console.log("Clicked on country: ", geographies[countryIndex]);
   };
 
@@ -47,18 +46,15 @@ const WorldMap = () => {
   }
 
   const handleMouseOver = (countryIndex, d) => {
-    console.log("d: ", d);
     setHovering(true);
     setCountry(d);
   };
 
   const handleMouseDown = (countryIndex, d) => {
-    console.log("d: ", d);
     setHovering(false);
     setCountry(d);
   };
 
-  console.log("profilesData: ", profilesData)
   return (
     <>
       <svg width={800} height={450} viewBox="0 0 800 450">
