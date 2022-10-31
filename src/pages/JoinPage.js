@@ -12,7 +12,7 @@ import { useInitialData } from "../hooks/InitialData";
 const JoinPage = () => {
   const {getCountryData} = useInitialData()
   const [loading, setLoading] = useState(false);
-  const [isLoadingInit, setIsLoadingInit] = useState(false);
+  const [setIsLoadingInit] = useState(false);
   const [teams, setTeams] = useState([]);
   const [errorMessages, setErrorMessages] = useState(null);
   const [countries, setCountries] = useState([]);

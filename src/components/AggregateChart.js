@@ -1,5 +1,5 @@
 import { BarChart } from '@toast-ui/react-chart';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAppStore } from '../contexts/AppStoreContext';
 
 const AggregateChart = () => {
