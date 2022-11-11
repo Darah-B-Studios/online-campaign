@@ -43,7 +43,7 @@ const HomePage = () => {
       </Row>
       <Row gutter={[16, 32]} align="middle" justify="center">
         <AggregateChart />
-        <AggregateTable />
+      {/* <AggregateTable /> */}
         <ProfileTable />
       </Row>
     </AppShell>

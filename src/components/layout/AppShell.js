@@ -31,7 +31,6 @@ const AppShell = ({ children }) => {
         style={{
           padding: "0 2rem",
           background: "#fff",
-          background: '#fff'
         }}
       >
         <div className="site-layout-content">{children}</div>
@@ -40,9 +39,10 @@ const AppShell = ({ children }) => {
       className="dark_theme"
         style={{
           textAlign: "center",
+                color: 'grey',
         }}
       >
-        Ant Design &copy; Darah-B Studios
+       Designed by &copy; Darah-B Studios
       </Footer>
     </Layout>
   );
