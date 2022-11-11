@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  AggregateChart,
-  AppShell,
-  ProfileTable,
-  WorldMap,
-} from "../components";
+import { AggregateChart, AppShell, ProfileTable, WorldMap } from "../components";
 import "../styles/home-page.style.scss";
 import "../styles/bootcamp-page.scss";
 import { Card, Col, Row, Typography } from "antd";
@@ -20,10 +15,10 @@ const HomePage = () => {
       {/* banner section */}
       <Row gutter={[16, 32]} style={{ marginTop: "3rem" }}>
         <Col md={12}>
-          <Card cover={<WorldMap />} bordered={false} />
+          <Card className="dark_theme" cover={<WorldMap />} bordered={false} />
         </Col>
         <Col md={12}>
-          <header className="header">
+          <header className="header header__custom">
             <Typography.Title
               style={{
                 textTransform: "uppercase",
@@ -54,7 +49,7 @@ const HomePage = () => {
             >
               Join now
             </button>
-            <span className="hashtag">#Nov18worldday</span>
+            <p class="hashtag">#Nov18worldday</p>
 
             {/* Add logo here */}
           </header>

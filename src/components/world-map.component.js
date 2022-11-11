@@ -41,7 +41,7 @@ const WorldMap = () => {
   }, [cities]);
 
   if (geographies && geographies.length <= 0) {
-    return <div>Hello world...</div>;
+    return <div>Loading data...</div>;
   }
 
   const handleMouseOver = (countryIndex, d) => {
