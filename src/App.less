@@ -4,8 +4,26 @@
 @blue: rgb(59, 130, 246);
 @indigo: rgb(168, 85, 247);
 
-.ant-layout {
+.dark_theme, .ant-layout-content {
     background: #181818 !important;
+    color: #fff;
+}
+
+.header {
+    p, span {
+        font-size: 1rem;
+    }
+    &__custom {
+        color: #e3e3e3;
+    }
+
+    button {
+        background: linear-gradient(to bottom, gold, orange);
+        border-radius: 1000px;
+        color: black;
+        box-shadow: 3px 8px 17px #18181833;
+    }
+
 }
 
 .button {

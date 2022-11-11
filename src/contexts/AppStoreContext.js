@@ -13,7 +13,7 @@ export const AppStoreProvider = ({ children }) => {
     setProfilesData,
   };
 
-  useEffect(() => {}, [aggregate]);
+  useEffect(() => {console.log('agg: ', aggregate)}, [aggregate]);
   return (
     <AppStoreContext.Provider value={values}>
       {children}

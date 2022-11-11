@@ -1,15 +1,14 @@
 import { Layout } from "antd";
 import React from "react";
-import NavLinks from "./NavLinks";
 import "./layout.style.scss";
 
 const { Header, Content, Footer } = Layout;
 
 const AppShell = ({ children }) => {
   return (
-    <Layout className="layout">
+    <Layout className="layout dark_theme" id="layout">
       <Header
-        theme="dark"
+      className="dark_theme"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -37,9 +36,9 @@ const AppShell = ({ children }) => {
         <div className="site-layout-content">{children}</div>
       </Content>
       <Footer
+      className="dark_theme"
         style={{
           textAlign: "center",
-          background: "#fff",
         }}
       >
         Ant Design &copy; Darah-B Studios
