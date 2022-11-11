@@ -1,6 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AppShell } from "../components";
-import { Form, Typography, Input, Button, Alert, Select, message } from "antd";
+import {
+  Form,
+  Typography,
+  Input,
+  Button,
+  Alert,
+  Select,
+  message,
+  PageHeader,
+} from "antd";
 import {
   PlusOutlined,
   GlobalOutlined,
@@ -8,15 +17,18 @@ import {
 } from "@ant-design/icons";
 import { supabase } from "../supaBaseClient";
 import { useInitialData } from "../hooks/InitialData";
+import { useNavigate } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
 
 const JoinPage = () => {
-  const {getCountryData} = useInitialData()
+  const { getCountryData } = useInitialData();
   const [loading, setLoading] = useState(false);
-  const [setIsLoadingInit] = useState(false);
+  const [loadInit, setIsLoadingInit] = useState(false);
   const [teams, setTeams] = useState([]);
   const [errorMessages, setErrorMessages] = useState(null);
   const [countries, setCountries] = useState([]);
   const [form] = Form.useForm();
+  const router = useNavigate();
 
   /**
    * @typedef {Object} Profile - profile class for users
@@ -35,20 +47,19 @@ const JoinPage = () => {
     const obj = {
       ...formValues,
       nickname: "",
-      email: ""
+      email: "",
+    };
+    const { data, error } = await supabase.from("profile").insert(obj);
+    if (data) {
+      form.resetFields();
+      setLoading(false);
+      message.success("You have successfully join the campaign");
     }
-    console.log("form: ", formValues)
-    // const { data, error } = await supabase.from("profile").insert(obj);
-    // if (data) {
-    //   form.resetFields();
-    //   setLoading(false);
-    //   message.success("You have successfully join the campaign");
-    // }
-    // if (error) {
-    //   setLoading(false);
-    //   setErrorMessages(error.message);
-    //   return <Alert message={error.message} closable type="error" />;
-    // }
+    if (error) {
+      setLoading(false);
+      setErrorMessages(error.message);
+      return <Alert message={error.message} closable type="error" />;
+    }
   };
 
   const getTeams = useCallback(async () => {
@@ -62,22 +73,42 @@ const JoinPage = () => {
     }
   }, []);
 
-
-    const loadData = useCallback(async() => {
-        setIsLoadingInit(true);
-        const countries = await getCountryData()
-        if(countries){setCountries(countries)}
-        getTeams();
-        setIsLoadingInit(false);
-    }, [])
+  const loadData = useCallback(async () => {
+    setIsLoadingInit(true);
+    const countries = await getCountryData();
+    if (countries) {
+      setCountries(countries);
+    }
+    getTeams();
+    setIsLoadingInit(false);
+  }, []);
 
   useEffect(() => {
-      loadData()
+    loadData();
   }, []);
 
   return (
     <AppShell>
       <div style={{ textAlign: "center", margin: "2rem 0" }}>
+        <div
+          style={{
+            padding: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <FiArrowLeft size={21} />
+          <Button
+            type="link"
+            style={{ marginLeft: 0 }}
+            onClick={() => router(`/`)}
+            danger
+          >
+            Go Back
+          </Button>
+        </div>
+
         <Typography.Title>Join the movement</Typography.Title>
         <Typography.Paragraph>
           Be a part of the movement to protect children
@@ -85,7 +116,7 @@ const JoinPage = () => {
       </div>
       <Form
         form={form}
-        onLoadedData
+        onLoadedData={(e) => console.log(e)}
         layout="vertical"
         name="join-campaign-form"
         className="login-form"
