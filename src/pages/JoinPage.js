@@ -32,17 +32,23 @@ const JoinPage = () => {
    */
   const onFinish = async (formValues) => {
     setLoading(true);
-    const { data, error } = await supabase.from("profile").insert(formValues);
-    if (data) {
-      form.resetFields();
-      setLoading(false);
-      message.success("You have successfully join the campaign");
+    const obj = {
+      ...formValues,
+      nickname: "",
+      email: ""
     }
-    if (error) {
-      setLoading(false);
-      setErrorMessages(error.message);
-      return <Alert message={error.message} closable type="error" />;
-    }
+    console.log("form: ", formValues)
+    // const { data, error } = await supabase.from("profile").insert(obj);
+    // if (data) {
+    //   form.resetFields();
+    //   setLoading(false);
+    //   message.success("You have successfully join the campaign");
+    // }
+    // if (error) {
+    //   setLoading(false);
+    //   setErrorMessages(error.message);
+    //   return <Alert message={error.message} closable type="error" />;
+    // }
   };
 
   const getTeams = useCallback(async () => {
@@ -162,23 +168,23 @@ const JoinPage = () => {
               ))}
           </Select>
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name="nickname"
           labelCol={24}
           label="Provide a nickname (alias)"
-          requiredMark
-          rules={[
-            {
-              required: true,
-              message: "Nickname is required",
-            },
-          ]}
+          // requiredMark
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "Nickname is required",
+          //   },
+          // ]}
         >
           <Input placeholder="Optional nickname" />
         </Form.Item>
         <Form.Item labelCol={24} label="Optional email address" name="email">
           <Input type="email" placeholder="Optional email" />
-        </Form.Item>
+        </Form.Item> */}
         <Button
           icon={<PlusOutlined />}
           block

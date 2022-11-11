@@ -40,7 +40,7 @@ const HomePage = () => {
               >
                 Join now
               </button>
-              <span class="hashtag">#Nov18worldday</span>
+              <span className="hashtag">#Nov18worldday</span>
 
             {/* Add logo here */}
           </header>
