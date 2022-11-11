@@ -46,16 +46,16 @@ const HomePage = () => {
           </header>
         </Col>
       </Row>
-      <Row gutter={[16, 32]}>
+      <Row gutter={[16, 32]} align="middle" justify="center">
         <Col md={12}>
           <Card size="small">
-            <AggregateChart />
+            {/* <AggregateChart /> */}
             <AggregateTable />
           </Card>
         </Col>
-        <Col md={12}>
+        {/* <Col md={12}>
           <ProfileTable />
-        </Col>
+        </Col> */}
       </Row>
     </AppShell>
   );
