@@ -37,9 +37,9 @@ const HomePage = () => {
                     Join now
                   </button>
                   <p className="hashtag">#Nov18WorldDay</p>
-
+                <img src="images/dark_logo.png" className="header__logo"/>
           </div>
-            <img src="images/candle.png" />
+            <img src="images/candle.png" id="candle" />
                 {/* Add logo here */}
           </header>
         </Col>
