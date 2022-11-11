@@ -31,6 +31,7 @@ const AppShell = ({ children }) => {
         style={{
           padding: "0 2rem",
           background: "#fff",
+          background: '#fff'
         }}
       >
         <div className="site-layout-content">{children}</div>

@@ -8,7 +8,6 @@ import {
   Alert,
   Select,
   message,
-  PageHeader,
 } from "antd";
 import {
   PlusOutlined,
@@ -46,6 +45,7 @@ const JoinPage = () => {
     setLoading(true);
     const obj = {
       ...formValues,
+        teamId: 1,
       nickname: "",
       email: "",
     };
@@ -53,7 +53,7 @@ const JoinPage = () => {
     if (data) {
       form.resetFields();
       setLoading(false);
-      message.success("You have successfully join the campaign");
+      message.success("You have successfully joined the campaign");
     }
     if (error) {
       setLoading(false);
@@ -109,8 +109,8 @@ const JoinPage = () => {
           </Button>
         </div>
 
-        <Typography.Title>Join the movement</Typography.Title>
-        <Typography.Paragraph>
+        <Typography.Title style={{color: '#fff'}}>Join the movement</Typography.Title>
+        <Typography.Paragraph style={{color: 'grey'}}>
           Be a part of the movement to protect children
         </Typography.Paragraph>
       </div>
@@ -134,7 +134,8 @@ const JoinPage = () => {
           name="countryCode"
           requiredMark
           labelCol={24}
-          label="Your country"
+          label={<p style={{color: 'grey'}}>Your country</p>}
+          style={{color: 'grey'}}
           rules={[
             {
               required: true,
@@ -158,8 +159,9 @@ const JoinPage = () => {
         </Form.Item>
         <Form.Item
           name="zipCode"
+          style={{color: 'grey'}}
           labelCol={24}
-          label="Zip code"
+          label={<p style={{color: 'grey'}}>Zipe code</p>}
           requiredMark
           rules={[
             {
@@ -177,13 +179,7 @@ const JoinPage = () => {
           name="teamId"
           labelCol={24}
           label="Select team"
-          requiredMark
-          rules={[
-            {
-              required: true,
-              message: "Team is required",
-            },
-          ]}
+          style={{display: 'none'}}
         >
           <Select
             prefix={<GlobalOutlined className="site-form-item-icon" />}
