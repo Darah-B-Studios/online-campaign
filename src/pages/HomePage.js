@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  AppShell,
-  WorldMap,
-} from "../components";
+import { AggregateChart, AppShell, ProfileTable, WorldMap } from "../components";
 import "../styles/home-page.style.scss";
 import "../styles/bootcamp-page.scss";
-import { Card, Col, Row, Typography } from "antd";
+import { Card, Col, Row } from "antd";
 import { ROUTES } from "../routes";
 import { useNavigate } from "react-router-dom";
 import AggregateTable from "../components/AggreateTable";
@@ -45,15 +42,9 @@ const HomePage = () => {
         </Col>
       </Row>
       <Row gutter={[16, 32]} align="middle" justify="center">
-        <Col md={12}>
-          <Card size="small" className="dark_theme" bordered={false}>
-            {/* <AggregateChart /> */}
-            <AggregateTable />
-          </Card>
-        </Col>
-        {/* <Col md={12}>
-          <ProfileTable />
-        </Col> */}
+        <AggregateChart />
+        <AggregateTable />
+        <ProfileTable />
       </Row>
     </AppShell>
   );

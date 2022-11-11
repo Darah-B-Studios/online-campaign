@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Col, Table } from "antd";
 import React, { useCallback, useEffect, useState } from "react";
 import { TABLES } from "../constants/tables";
 import { useAppStore } from "../contexts/AppStoreContext";
@@ -32,16 +32,16 @@ const ProfileTable = () => {
           ...item,
           teamId: teamsData.find((team) => team.id.toString() === item.teamId)
             ?.name,
-            countryName: countryData.find(
-                (country) => item.countryCode === country.code
-              )?.name,
+          countryName: countryData.find(
+            (country) => item.countryCode === country.code
+          )?.name,
           countryCode: countryData.find(
             (country) => item.countryCode === country.code
           )?.code,
         };
       });
       setProfiles(mappedProfiles);
-      setProfilesData(mappedProfiles)
+      setProfilesData(mappedProfiles);
       setLoading(false);
     }
   });
@@ -61,15 +61,17 @@ const ProfileTable = () => {
   }, []);
 
   return (
-    profiles.length > 0 && (
-      <Table
-        size="small"
-        rowKey="id"
-        loading={loading}
-        dataSource={profiles}
-        columns={profileTableColumn}
-      />
-    )
+    <Col md={12} style={{ display: "none" }}>
+      {profiles.length > 0 && (
+        <Table
+          size="small"
+          rowKey="id"
+          loading={loading}
+          dataSource={profiles}
+          columns={profileTableColumn}
+        />
+      )}
+    </Col>
   );
 };
 
