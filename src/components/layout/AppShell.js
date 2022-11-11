@@ -9,6 +9,7 @@ const AppShell = ({ children }) => {
   return (
     <Layout className="layout">
       <Header
+        theme="dark"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -25,7 +26,7 @@ const AppShell = ({ children }) => {
           <span>Solidarity </span>
           <span>Walk</span>
         </div>
-        <NavLinks style={{ minWidth: 0 }} className="navbar_links" />
+      {/* <NavLinks style={{ minWidth: 0 }} className="navbar_links" /> */}
       </Header>
       <Content
         style={{

@@ -7,7 +7,7 @@ import {
 } from "../components";
 import "../styles/home-page.style.scss";
 import "../styles/bootcamp-page.scss";
-import { Card, Col, Row, Space } from "antd";
+import { Card, Col, Row, Space, Typography } from "antd";
 import { ROUTES } from "../routes";
 import { useNavigate } from "react-router-dom";
 import AggregateTable from "../components/AggreateTable";
@@ -24,32 +24,25 @@ const HomePage = () => {
         </Col>
         <Col md={12}>
           <header className="header">
-            <h2 className="header__title">
-              Become{" "}
-              <span className="header__title_decorated">
-                part of the movement,
-              </span>
-              <br />
-              Protect kids.
-            </h2>
+          <Typography.Title style={{textTransform: 'uppercase', letterSpacing: '-2px', marginBottom: '-.2rem'}}>November 18</Typography.Title>
+          <p>Marks the first united nations</p>
+          <p>World Day for the Prevention of, and Healing from Child Sexual Exploitation, Abuse and Violence</p>
             <p className="header__text">
               World day for the prevention and healing of child sexual abuse and
               violence.
             </p>
-            <Space>
+              <span>Join us to</span>
+              <h4>Light a Candle</h4>
+              <p>and help bring the tragey of child sexual violence out of the darkness</p>
               <button
                 className="button button_primary"
                 onClick={() => navigate(ROUTES.JOIN)}
               >
-                Join a team
+                Join now
               </button>
-              <button
-                className="button button_secondary"
-                onClick={() => navigate(ROUTES.TEAM)}
-              >
-                Start a team
-              </button>
-            </Space>
+              <span class="hashtag">#Nov18worldday</span>
+
+            {/* Add logo here */}
           </header>
         </Col>
       </Row>
