@@ -5,16 +5,44 @@
 @indigo: rgb(168, 85, 247);
 
 .dark_theme, .ant-layout-content {
-    background: #181818 !important;
+    background: #000 !important;
     color: #fff;
+}
+
+.hashtag {
+    color: @blue;
+    padding: 10px;
 }
 
 .header {
     p, span {
         font-size: 1rem;
     }
+
+    &__content {
+        z-index: 2;
+        background: transparent !important;
+    }
     &__custom {
+        position: relative;
         color: #e3e3e3;
+        
+        img {
+            position: absolute;
+            max-width: 100%;
+            left: 3rem;
+            bottom: 0;
+            z-index: 1;
+            height: 20rem;
+            opacity: .3;
+        }
+    }
+
+    &__title {
+        font-size: 2.2rem !important;
+        background: linear-gradient(to bottom, yellow, orange);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     button {

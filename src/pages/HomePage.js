@@ -21,26 +21,26 @@ const HomePage = () => {
           <Card className="dark_theme" cover={<WorldMap />} bordered={false} />
         </Col>
         <Col md={12}>
-          <header className="header header__custom">
-          <Typography.Title style={{textTransform: 'uppercase', letterSpacing: '-2px', marginBottom: '-.2rem'}}>November 18</Typography.Title>
-          <p>Marks the first united nations</p>
-          <p>World Day for the Prevention of, and Healing from Child Sexual Exploitation, Abuse and Violence</p>
-            <p className="header__text">
-              World day for the prevention and healing of child sexual abuse and
-              violence.
-            </p>
-              <span>Join us to</span>
-              <h4>Light a Candle</h4>
-              <p>and help bring the tragey of child sexual violence out of the darkness</p>
-              <button
-                className="button button_primary"
-                onClick={() => navigate(ROUTES.JOIN)}
-              >
-                Join now
-              </button>
-              <p class="hashtag">#Nov18worldday</p>
+             <header className="header header__custom">
+      <div className="header__content">
+             <h4 className="header__title">November 18</h4>
+              <p className="header__text">Marks the first United Nations World Day for the Prevention of, and Healing from Child Sexual Exploitation, Abuse and Violence
+                  World day for the prevention and healing of child sexual abuse and
+                  violence. </p>
+                  <span style={{fontSize: '1rem', color: 'orangred'}}>Join us to</span>
+                  <h4 className="header__title">Light a Candle</h4>
+                  <p className="header__text">and help bring the tragey of child sexual violence out of the darkness</p>
+                  <button
+                    className="button button_primary"
+                    onClick={() => navigate(ROUTES.JOIN)}
+                  >
+                    Join now
+                  </button>
+                  <p className="hashtag">#Nov18WorldDay</p>
 
-            {/* Add logo here */}
+          </div>
+            <img src="images/candle.png" />
+                {/* Add logo here */}
           </header>
         </Col>
       </Row>
