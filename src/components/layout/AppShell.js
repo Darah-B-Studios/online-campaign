@@ -6,7 +6,7 @@ const { Header, Content, Footer } = Layout;
 
 const AppShell = ({ children }) => {
   return (
-    <Layout className="layout dark_theme" id="layout">
+    <Layout className="layout dark_theme" id="layout" style={{overflow: 'hidden'}}>
       <Header
       className="dark_theme"
         style={{
@@ -29,7 +29,7 @@ const AppShell = ({ children }) => {
       </Header>
       <Content
         style={{
-          padding: "0 2rem",
+          padding: "-9rem 2rem 0",
           background: "#fff",
         }}
       >
