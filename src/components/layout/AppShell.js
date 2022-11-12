@@ -24,6 +24,7 @@ const AppShell = ({ children }) => {
         >
           <span>Solidarity </span>
           <span>Walk</span>
+            <img style={{maxWidth: '100%', height: '2rem', marginLeft: '1rem'}} src="images/dark_logo.png"/>
         </div>
       {/* <NavLinks style={{ minWidth: 0 }} className="navbar_links" /> */}
       </Header>

@@ -19,7 +19,6 @@ const HomePage = () => {
         <Col md={12}>
              <header className="header header__custom">
       <div className="header__content">
-                <img src="images/dark_logo.png" className="header__logo"/>
              <h4 className="header__title">November 18</h4>
               <p className="header__text">Marks the first United Nations World Day for the Prevention of, and Healing from Child Sexual Exploitation, Abuse and Violence
                   World day for the prevention and healing of child sexual abuse and
