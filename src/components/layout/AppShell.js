@@ -11,21 +11,11 @@ const AppShell = ({ children }) => {
       className="dark_theme"
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           background: "#fff",
         }}
       >
-        <div
-          style={{
-            width: "20rem !important",
-            fontSize: "1.2rem",
-            fontWeight: "500",
-          }}
-        >
-          <span>Solidarity </span>
-          <span>Walk</span>
-            <img style={{maxWidth: '100%', height: '2rem', marginLeft: '1rem'}} src="images/dark_logo.png"/>
-        </div>
+        <img style={{maxWidth: '100%', height: '4rem', margin: '0 auto'}} src="images/dark_logo.png"/>
       {/* <NavLinks style={{ minWidth: 0 }} className="navbar_links" /> */}
       </Header>
       <Content
