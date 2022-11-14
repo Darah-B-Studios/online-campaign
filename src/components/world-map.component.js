@@ -89,7 +89,7 @@ const WorldMap = () => {
                 cx={projection(city.coordinates)[0]}
                 cy={projection(city.coordinates)[1]}
                 r={city.population / 3000000}
-                fill="#E91E63"
+                fill="#FFD700"
                 stroke="#FFFFFF"
                 className="marker"
                 onClick={() => handleMarkerClick(i)}
