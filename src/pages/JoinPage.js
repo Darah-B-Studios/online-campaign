@@ -54,7 +54,7 @@ const JoinPage = () => {
       form.resetFields();
       setLoading(false);
       message.success("You have successfully joined the campaign");
-      router("/")
+      window.location.replace('https://globalcollaborative.org')
     }
     if (error) {
       setLoading(false);
