@@ -33,7 +33,7 @@ const AppShell = ({ children }) => {
                 color: 'grey',
         }}
       >
-       Designed by &copy; Darah-B Studios
+       Designed by &copy; Darah-B Studios and LOGOTEL LLC
       </Footer>
     </Layout>
   );
